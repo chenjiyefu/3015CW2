@@ -1,0 +1,19 @@
+#version 410
+layout(vertices = 4) out;
+
+layout(location = 0) in vec2 inTexcoords[];
+
+layout(location = 0) out vec2 outTexcoords[];
+
+void main() {
+    gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;
+    outTexcoords[gl_InvocationID] = inTexcoords[gl_InvocationID];
+
+    gl_TessLevelInner[0] = 5;
+    gl_TessLevelInner[1] = 5;
+
+    gl_TessLevelOuter[0] = 6;
+    gl_TessLevelOuter[1] = 6;
+    gl_TessLevelOuter[2] = 6;
+    gl_TessLevelOuter[3] = 6;
+}

@@ -1,0 +1,28 @@
+﻿  glad.c
+  glslprogram.cpp
+  glutils.cpp
+  main.cpp
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\helper\scenerunner.h(16,30): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  (编译源文件“main.cpp”)
+  
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\helper\scenerunner.h(16,24): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  (编译源文件“main.cpp”)
+  
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\helper\scenerunner.h(20,30): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  (编译源文件“main.cpp”)
+  
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\helper\scenerunner.h(20,21): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  (编译源文件“main.cpp”)
+  
+  scenebasic_uniform.cpp
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\scenebasic_uniform.cpp(86,50): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\scenebasic_uniform.cpp(88,111): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\scenebasic_uniform.cpp(88,59): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\scenebasic_uniform.cpp(91,53): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\scenebasic_uniform.cpp(93,94): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\scenebasic_uniform.cpp(93,62): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\scenebasic_uniform.cpp(335,18): warning C4305: “+=”: 从“double”到“float”截断
+C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\scenebasic_uniform.cpp(341,22): warning C4305: “初始化”: 从“double”到“float”截断
+  正在生成代码...
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  Project_Template.vcxproj -> C:\Users\Lenovo\Desktop\3015CW2\COMP3015-CW1\x64\Debug\Project_Template.exe

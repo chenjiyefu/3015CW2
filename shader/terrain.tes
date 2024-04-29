@@ -1,0 +1,33 @@
+#version 410
+layout(quads, equal_spacing, ccw) in;
+layout(location = 0) out vec2 outTexcoord;
+layout(location = 1) out vec3 outPosition;
+layout(location = 2) out vec4 outPositionShadow;
+// layout(location = 2) out vec3 outNormal;
+
+layout(location = 0) in vec2 inTexcoords[];
+
+uniform sampler2D texHeight;
+
+uniform mat4 view;
+uniform mat4 proj;
+uniform mat4 lightPV;
+
+float getHeight(vec2 uv) { return texture(texHeight, uv, 0).r * 1000; }
+
+void main() {
+    float u = gl_TessCoord.x;
+    float v = gl_TessCoord.y;
+
+    outPosition =
+        mix(mix(gl_in[0].gl_Position, gl_in[1].gl_Position, u), mix(gl_in[3].gl_Position, gl_in[2].gl_Position, u), v)
+            .xyz;
+
+    outTexcoord = mix(mix(inTexcoords[0], inTexcoords[1], u), mix(inTexcoords[3], inTexcoords[2], u), v);
+
+    outPosition.y = getHeight(outTexcoord);
+
+    outPositionShadow = lightPV * vec4(outPosition, 1);
+
+    gl_Position = proj * view * vec4(outPosition, 1);
+}

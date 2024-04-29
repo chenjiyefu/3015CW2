@@ -1,0 +1,52 @@
+#version 410
+layout(vertices = 4) out;
+
+layout(location = 0) in vec2 inTexcoords[];
+
+layout(location = 0) out vec2 outTexcoords[];
+
+uniform mat4 view;
+uniform mat4 proj;
+uniform float viewportWidth;
+
+void main() {
+    gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;
+    outTexcoords[gl_InvocationID] = inTexcoords[gl_InvocationID];
+
+    float d0 = length(gl_in[3].gl_Position.xyz - gl_in[0].gl_Position.xyz);
+    float d1 = length(gl_in[0].gl_Position.xyz - gl_in[1].gl_Position.xyz);
+    float d2 = length(gl_in[1].gl_Position.xyz - gl_in[2].gl_Position.xyz);
+    float d3 = length(gl_in[2].gl_Position.xyz - gl_in[3].gl_Position.xyz);
+
+    vec4 c0 = view * ((gl_in[3].gl_Position + gl_in[0].gl_Position) / 2.);
+    vec4 c1 = view * ((gl_in[0].gl_Position + gl_in[1].gl_Position) / 2.);
+    vec4 c2 = view * ((gl_in[1].gl_Position + gl_in[2].gl_Position) / 2.);
+    vec4 c3 = view * ((gl_in[2].gl_Position + gl_in[3].gl_Position) / 2.);
+
+    vec4 p00 = proj * (c0 - vec4(d0 / 2, 0, 0, 0));
+    vec4 p01 = proj * (c0 + vec4(d0 / 2, 0, 0, 0));
+
+    vec4 p10 = proj * (c1 - vec4(d1 / 2, 0, 0, 0));
+    vec4 p11 = proj * (c1 + vec4(d1 / 2, 0, 0, 0));
+
+    vec4 p20 = proj * (c2 - vec4(d2 / 2, 0, 0, 0));
+    vec4 p21 = proj * (c2 + vec4(d2 / 2, 0, 0, 0));
+
+    vec4 p30 = proj * (c3 - vec4(d3 / 2, 0, 0, 0));
+    vec4 p31 = proj * (c3 + vec4(d3 / 2, 0, 0, 0));
+
+    float x0 = abs(p00.x / p00.w - p01.x / p01.w);
+    float x1 = abs(p10.x / p10.w - p11.x / p11.w);
+    float x2 = abs(p20.x / p20.w - p21.x / p21.w);
+    float x3 = abs(p30.x / p30.w - p31.x / p31.w);
+
+    // gl_TessLevelOuter[0]
+    float k = viewportWidth / 20;
+    gl_TessLevelInner[0] = min((x1 + x3) / 2, 2) * k;
+    gl_TessLevelInner[1] = min((x0 + x2) / 2, 2) * k;
+
+    gl_TessLevelOuter[0] = min(x0, 2) * k;
+    gl_TessLevelOuter[1] = min(x1, 2) * k;
+    gl_TessLevelOuter[2] = min(x2, 2) * k;
+    gl_TessLevelOuter[3] = min(x3, 2) * k;
+}
