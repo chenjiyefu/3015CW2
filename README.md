@@ -1,6 +1,6 @@
-Github link：https://github.com/JiyefuChen/3015cw1.git
+Github link：https://github.com/chenjiyefu/3015CW2.git
 
-youtube link：https://youtu.be/-F6OA2LBTCg
+youtube link：https://youtu.be/isOARJ0zR68
 
 ## 1. Which version Visual Studio and Operating System you used to test/write the code  locally?
 
